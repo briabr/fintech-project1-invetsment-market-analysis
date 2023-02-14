@@ -1,6 +1,6 @@
 # Import libraries and dependencies
 import numpy as np
-import pandas as pd 
+import pandas as pd
 import os
 import alpaca_trade_api as tradeapi
 import datetime as dt
@@ -72,17 +72,17 @@ class MCSimulation:
         self.nTrading = num_trading_days
         self.simulated_return = ""
         
-    def calc_cumulative_return(weights):
+    def calc_cumulative_return(self):
         """
         Calculates the cumulative return of a stock over time using a Monte Carlo simulation (Brownian motion with drift).
 
         """
         
         # Get closing prices of each stock
-        last_prices = weights.portfolio_data.xs('close',level=1,axis=1)[-1:].values.tolist()[0]
+        last_prices = self.portfolio_data.xs('close',level=1,axis=1)[-1:].values.tolist()[0]
         
         # Calculate the mean and standard deviation of daily returns for each stock
-        daily_returns = weights.portfolio_data.xs('daily_return',level=1,axis=1)
+        daily_returns = self.portfolio_data.xs('daily_return',level=1,axis=1)
         mean_returns = daily_returns.mean().tolist()
         std_returns = daily_returns.std().tolist()
         
@@ -90,7 +90,7 @@ class MCSimulation:
         portfolio_cumulative_returns = pd.DataFrame()
         
         # Run the simulation of projecting stock prices 'nSim' number of times
-        for n in range(weights.nSim):
+        for n in range(self.nSim):
         
             if n % 10 == 0:
                 print(f"Running Monte Carlo simulation number {n}.")
@@ -102,7 +102,7 @@ class MCSimulation:
             for s in range(len(last_prices)):
 
                 # Simulate the returns for each trading day
-                for i in range(weights.nTrading):
+                for i in range(self.nTrading):
         
                     # Calculate the simulated price using the last price within the list
                     simvals[s].append(simvals[s][-1] * (1 + np.random.normal(mean_returns[s], std_returns[s])))
@@ -111,16 +111,16 @@ class MCSimulation:
             sim_df = pd.DataFrame(simvals).T.pct_change()
     
             # Use the `dot` function with the weights to multiply weights with each column's simulated daily returns
-            sim_df = sim_df.dot(weights)
+            sim_df = sim_df.dot(self.weights)
     
             # Calculate the normalized, cumulative return series
             portfolio_cumulative_returns[n] = (1 + sim_df.fillna(0)).cumprod()
         
         # Set attribute to use in plotting
-        weights.simulated_return = portfolio_cumulative_returns
+        self.simulated_return = portfolio_cumulative_returns
         
         # Calculate 95% confidence intervals for final cumulative returns
-        weights.confidence_interval = portfolio_cumulative_returns.iloc[-1, :].quantile(q=[0.025, 0.975])
+        self.confidence_interval = portfolio_cumulative_returns.iloc[-1, :].quantile(q=[0.025, 0.975])
         
         return portfolio_cumulative_returns
     
