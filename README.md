@@ -20,12 +20,12 @@ Plottly
 
 ## Installation Guide
 ```
-  >1-pip install jupyterlab
-  >2-pip install pandas
-  >3-pip install numpy
-  >4-pip install matplotlib
-  >5-pip install hvplot
-  >-6pip install plotly 
+  -pip install jupyterlab
+  -pip install pandas
+  -pip install numpy
+  -pip install matplotlib
+  -pip install hvplot
+  -pip install plotly 
   ```
   ---
 
