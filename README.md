@@ -1,34 +1,38 @@
 # Where To Invest? Stocks or ETFs?
 ![](./images/Screen%20Shot%202023-02-15%20at%2010.16.24%20PM.png)
-```
+
 Evaluating, analyzing stock and ETF investments performance, risk return and forecasting the future performance. Determining the best performance fund with the most investment potential based on key risk-management metrics: the daily returns, standard deviations, Sharpe ratios, and betas. Using Monte Carlo simulation to forecast future and potential returns. 
-```
+----
 ## Technologies
+[![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org/project/pandas/)
+[![Conda Latest Release](https://anaconda.org/conda-forge/pandas/badges/version.svg)](https://anaconda.org/anaconda/pandas/)
+[![Package Status](https://img.shields.io/pypi/status/pandas.svg)](https://pypi.org/project/pandas/)
+---
 ```
 JupyterLab 
 pandas
 numpy 
 Jupyter
 hvPlot
-Plottly 
-```
+Plottly
+``` 
+---
 
 ## Installation Guide
 ```
-  pip install jupyterlab
-  pip install pandas
-  pip install numpy
-  pip install matplotlib
-  pip install hvplot
-  pip install plotly 
-
+  >1-pip install jupyterlab
+  >2-pip install pandas
+  >3-pip install numpy
+  >4-pip install matplotlib
+  >5-pip install hvplot
+  >-6pip install plotly 
   ```
+  ---
 
 ## Usage
 
-```
-clone the repository and run the code on your VS vode or Jupyter Lab.
-```
+clone the repository and run the code on your VS vode of Jupyter Lab.
+---
 
 ## Performance
 ![](./images/Screen%20Shot%202023-02-15%20at%2010.10.02%20PM.png)
@@ -37,6 +41,12 @@ clone the repository and run the code on your VS vode or Jupyter Lab.
 
 ## Risk Return Analysis
 ![](./images/Screen%20Shot%202023-02-15%20at%2010.10.39%20PM.png)
+
+## Contributors
+```
+Bria El Filali
+```
+---
 
 ## GitHub Repo
 https://github.com/briabr/fintech-tech-etfs-investment-analysis
